@@ -113,7 +113,7 @@ Each service is monitored using the four Golden Signals:
 Alerts are symptom-based, not noise-based.
 
 ---
-
+```text
 sentinelops-observability/
 ├── README.md
 ├── architecture/
@@ -145,7 +145,7 @@ sentinelops-observability/
     ├── api-latency.md
     ├── pod-crashloop.md
     └── node-memory.md
-
+```
 
 ---
 
