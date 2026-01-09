@@ -1,0 +1,32 @@
+global:
+  scrape_interval: 15s     # How often to fetch metrics
+  evaluation_interval: 15s # How often to check recording/alert rules
+  external_labels:
+    monitor: 'central-brain'
+
+# Load rules once and periodically evaluate them
+rule_files:
+  - "rules/*.yml"
+
+# Alertmanager configuration (where to send alerts)
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          # - alertmanager:9093
+
+scrape_configs:
+  # 1. Prometheus monitoring itself
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # 2. Node Exporter (Host level metrics like CPU/RAM)
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['node-exporter:9100']
+
+  # 3. Example of Service Discovery (Update for Kubernetes/EC2 as needed)
+  # - job_name: 'dynamic-services'
+  #   kubernetes_sd_configs:
+  #     - role: pod
