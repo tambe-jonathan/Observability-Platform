@@ -31,6 +31,8 @@ User traffic is served by Kubernetes workloads running in the `applications` nam
 
 Metrics, logs, and synthetic probes are collected and processed by a centralized observability stack.
 
+```text
+
 # User Traffic
      ↓
 Kubernetes Service
@@ -58,8 +60,7 @@ Logs (stdout)           │
 Logs ───────────────▶ Loki ─────────▶ Grafana
 
 Blackbox Exporter ─▶ External Probes
-
----
+```
 
 
 ---
