@@ -1,0 +1,6 @@
+# List of plugins to be installed at startup
+plugins:
+  - grafana-piechart-panel
+  - grafana-polystat-panel      # Great for "Status Grid" executive views
+  - grafana-clock-panel         # Useful for SOC/NOC room displays
+  - vertamedia-clickhouse-datasource
