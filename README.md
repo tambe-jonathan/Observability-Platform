@@ -11,7 +11,6 @@ This platform goes beyond tool installation and focuses on:
 - Alert discipline
 - Incident detection and response
 - Continuous validation via stress testing
-
 ---
 
 ## Objectives
