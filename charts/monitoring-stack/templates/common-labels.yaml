@@ -1,0 +1,11 @@
+# Standardized labels for corporate cost-tracking
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "monitoring-stack.fullname" . }}-metadata
+  labels:
+    env: production
+    team: sre-core
+    cost-center: "101-ops"
+data:
+  cluster-name: "prod-cluster-01"

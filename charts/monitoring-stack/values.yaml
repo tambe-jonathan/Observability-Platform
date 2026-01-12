@@ -1,0 +1,35 @@
+# Production Overrides
+kube-prometheus-stack:
+  prometheus:
+    prometheusSpec:
+      retention: 30d
+      storageSpec:
+        volumeClaimTemplate:
+          spec:
+            storageClassName: "premium-ssd" # Use fast disks for TSDB
+            resources:
+              requests:
+                storage: 100Gi
+  
+  grafana:
+    enabled: true
+    adminPassword: "USE_A_SECRET_VAULT_HERE"
+    ingress:
+      enabled: true
+      hosts:
+        - grafana.corporate-domain.com
+    # Connect to your Dashboards-as-Code folder
+    dashboardProviders:
+      dashboardproviders.yaml:
+        apiVersion: 1
+        providers:
+          - name: 'default'
+            options:
+              path: /var/lib/grafana/dashboards
+
+  alertmanager:
+    config:
+      global:
+        resolve_timeout: 5m
+      route:
+        receiver: 'pagerduty-production'
